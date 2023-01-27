@@ -1,0 +1,13 @@
+@import url("main.css");
+
+html {
+	background-color: #ffffff;
+}
+
+a:hover {
+	background: rgba(175, 119, 119, 0.658);
+}
+
+a:active {
+	background: rgb(175, 119, 119);
+}

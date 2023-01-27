@@ -1,9 +1,29 @@
+<?php
+$cookie_name = "theme";
+if (isset($_COOKIE[$cookie_name]))
+	$cookie_value = $_COOKIE[$cookie_name];
+else
+{
+	$cookie_opts = array(
+		'expires' => time() + (86400 * 30),
+		'path' => '/',
+		'secure' => true,
+		'samesite' => 'None'
+	);
+	$cookie_value = "white";
+	setcookie($cookie_name, $cookie_value, $cookie_opts);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
-
-	<link id="css_link" rel='stylesheet' href="css/style clair.css">
+	<?php
+		if ($_COOKIE[$cookie_name] == 'white')
+			echo "<link id=\"css_link\" rel='stylesheet' href=\"css/style_clair.css\">";
+		else
+			echo "<link id=\"css_link\" rel='stylesheet' href=\"css/style_sombre.css\">";
+	?>
 	<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
 	<meta charset="utf-8">
 	<meta name="Antonin Barbachou" content="Magasin et repérage produits">
@@ -21,13 +41,10 @@
 
 <body>
 	<header>
-		
 		<div id="block">
 			<h1 id="titre1">MAGASIN MARTEAU HYDRAULIQUE ET ELECTRIQUE</h1>
 			<div class="search-container">
-
 			</div>
-			
 		</div>
 		<div>
 			<nav class="SelectionPages">
@@ -42,10 +59,19 @@
 			</nav>
 
 		</div>
-
 	</header>
 	<footer>
-		<div style="position: relative;" class="ChangementStyle"><button id="change_style"><img id="img_style" src="assets/lune.png"></button></div>
+		<div style="position: relative;" class="ChangementStyle">
+			<button id="change_style">
+				<?php
+					if ($_COOKIE[$cookie_name] == 'white')
+						echo "<img id=\"img_style\" src=\"assets/lune.png\"/>";
+					else
+						echo "<img id=\"img_style\" src=\"assets/soleil.png\"/>";
+				?>
+				
+			</button>
+		</div>
 	</footer>
 	<script src="js/main.js"></script>
 </body>

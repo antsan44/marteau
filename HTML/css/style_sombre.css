@@ -1,0 +1,21 @@
+@import url("main.css");
+
+html {
+	background-color: #3d3d3d;
+}
+
+.ChangementStyle {
+	margin-bottom: 0px;
+}
+
+body {
+	color: white;
+}
+
+a:hover {
+	background: #8f6767;
+}
+
+a:active {
+	background: #e8b5db;
+}
