@@ -1,0 +1,1 @@
+SELECT `idProduit`,`Marque`,`Nom`,`RefFabriquant`,`Description` FROM MagasinMarteau.produits;

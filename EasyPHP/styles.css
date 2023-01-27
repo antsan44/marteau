@@ -1,0 +1,66 @@
+body
+{
+	background-color: #B9F9F9; 
+	padding	: 20px;
+}
+p
+{ 
+   color: black;
+   font-size: 16px; /* Taille police en pixel */
+}
+h1,h2,h3
+{
+   font-family: Arial;
+}
+h1
+{
+   /*color: darkred ; */
+   /*color: #8B0000 ;*/
+   color: rgb(139, 0, 0);
+   text-align:center;
+   text-transform:capitalize;
+   font-size: 26px;  
+}
+h2,h3
+{
+   color: darkorange;
+   text-align:left;
+   font-size: 22px;  
+}
+#top
+{
+	position: relative;
+	height:157px; /* 155 pour hauteur image + 2 pour bordure image */
+    text-decoration:blink;
+	background: white;
+	margin-left: 50px ;
+	margin-right: 50px ;
+
+}
+#top p
+{
+	padding: 50px ;
+	color: orange;
+}
+#menu
+{
+	float: right; /* Le menu flottera à droite*/
+	width: 200px; 
+	padding: 10px;
+	margin: 10px;
+	background-color: cyan;
+}
+
+a
+{
+  text-decoration: none ;
+}
+a:hover
+{
+   background-color: white;
+   color: black;
+}
+a:visited
+{
+   color: brown;
+}
