@@ -3,7 +3,7 @@
 
 <head>
 
-	<link id="css_link" rel='stylesheet' href="style clair.css">
+	<link id="css_link" rel='stylesheet' href="css/style clair.css">
 	<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
 	<meta charset="utf-8">
 	<meta name="Antonin Barbachou" content="Magasin et repérage produits">
@@ -44,13 +44,45 @@
 	</header>
 	<div class="recherche">
 		<h2>Produit à rechercher :</h2>
-		<form>
-			<input type="text" placeholder="Rechercher..." autofocus>
-			<input type="submit" value="Rechercher" >
+		<form method="get" action="recherche.php">
+			<input name="search_field" type="text" placeholder="Rechercher..." autofocus>
+			<input name="submit" type="submit" value="Rechercher" >
 		</form>
 	</div>
 
+	<?php
+	/* Connexion à la base de données */
+
+	use function PHPSTORM_META\type;
+
+	$mysqli = new mysqli('localhost', 'mysql', 'password', 'MagasinMarteau');
+	if ($mysqli->connect_errno) {
+		echo '<p>Échec lors de la connexion à MySQL : (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error . ' </p>';
+		exit;
+	}
+
+	/* Modification du jeu de résultats en utf8 */
+	if (!$mysqli->set_charset('utf8')) {
+		echo '<p>Erreur lors du chargement du jeu de caractères utf8 : ' . $mysqli->error . ' </p>';
+		exit;
+	}
+
+	$keyword = $_GET["search_field"];
+	if ($keyword != "")
+	{
+		$query = "SELECT * FROM MagasinMarteau.produits WHERE Nom LIKE '%" . $keyword . "%';";
+		$result = $mysqli->query($query);
+		$mysqli->close();
+
+		if ($result->fetch_array() == NULL)
+			echo "<p>Nous n'avons pas encore ce produit en stock.</p>";
+		while (($line = $result->fetch_array()) != NULL)
+			echo "<p>" . $line["Nom"] . "</p>";
+	}
+	?>
+	<footer>
+		<div style="position: relative;" class="ChangementStyle"><button id="change_style"><img id="img_style" src="assets/lune.png"></button></div>
+	</footer>
+	<script src="js/main.js"></script>
 </body>
-<script src="main.js"></script>
-<div style="position: relative;" class="ChangementStyle"><button id="change_style"><img id="img_style" src="lune.png"></button></div>
 </html>

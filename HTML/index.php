@@ -3,7 +3,7 @@
 
 <head>
 
-	<link id="css_link" rel='stylesheet' href="style clair.css">
+	<link id="css_link" rel='stylesheet' href="css/style clair.css">
 	<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
 	<meta charset="utf-8">
 	<meta name="Antonin Barbachou" content="Magasin et repérage produits">
@@ -44,9 +44,9 @@
 		</div>
 
 	</header>
-	<div style="position: relative;"><button id="change_style"><img id="img_style" src="lune.png"></button></div>	
-	
+	<footer>
+		<div style="position: relative;" class="ChangementStyle"><button id="change_style"><img id="img_style" src="assets/lune.png"></button></div>
+	</footer>
+	<script src="js/main.js"></script>
 </body>
-<script src="main.js"></script>
-
 </html>

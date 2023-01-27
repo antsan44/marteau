@@ -3,7 +3,7 @@
 
 <head>
 
-	<link id="css_link" rel='stylesheet' href="style clair.css">
+	<link id="css_link" rel='stylesheet' href="css/style clair.css">
 	<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
 	<meta charset="utf-8">
 	<meta name="Antonin Barbachou" content="Magasin et repérage produits">
@@ -43,14 +43,12 @@
 		</div>
 
 	</header>
-	<div style="position: relative;"><button id="change_style"><img id="img_style" src="lune.png"></button></div>
-
 	<?php
 	/* Connexion à la base de données */
 
 	use function PHPSTORM_META\type;
 
-	$mysqli = new mysqli('127.0.0.1', 'root', '', 'MagasinMarteau');
+	$mysqli = new mysqli('localhost', 'mysql', 'password', 'MagasinMarteau');
 	if ($mysqli->connect_errno) {
 		echo '<p>Échec lors de la connexion à MySQL : (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error . ' </p>';
 		exit;
@@ -116,11 +114,10 @@
 	echo $html;
 	?>
 	</div>
-	
-
-
-
+	<footer>
+		<div style="position: relative;" class="ChangementStyle"><button id="change_style"><img id="img_style" src="assets/lune.png"></button></div>
+	</footer>
+	<script src="js/main.js"></script>
+	<script src="js/magasin.js"></script>
 </body>
-<script src="main.js"></script>
-
 </html>
