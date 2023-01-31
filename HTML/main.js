@@ -1,17 +1,24 @@
 document.getElementById('change_style').addEventListener('click', function() {
 	var img = document.getElementById('img_style');
 
-	if (img.getAttribute('src') == 'soleil.png')
-	{
-		document.getElementById('css_link').setAttribute('href', 'style clair.css');
-		img.setAttribute('src', 'lune.png');
-	}
-	else
+	if (img.getAttribute('src') == 'lune.png')
 	{
 		document.getElementById('css_link').setAttribute('href', 'style sombre.css');
 		img.setAttribute('src', 'soleil.png');
 	}
+	else
+	{
+		document.getElementById('css_link').setAttribute('href', 'style clair.css');
+		img.setAttribute('src', 'lune.png');
+	}
 });
+
+
+	
+
+
+
+
 
 //Check the url of the page
 //get the nb of the page

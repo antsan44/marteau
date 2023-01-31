@@ -25,7 +25,7 @@
 
 		<div id="block">
 			<h1 id="titre1">MAGASIN MARTEAU HYDRAULIQUE ET ELECTRIQUE</h1>
-			
+
 		</div>
 		<div>
 			<nav class="SelectionPages">
@@ -42,15 +42,45 @@
 		</div>
 
 	</header>
-	<div class="recherche">
-		<h2>Produit à rechercher :</h2>
-		<form>
-			<input type="text" placeholder="Rechercher..." autofocus>
-			<input type="submit" value="Rechercher" >
-		</form>
-	</div>
+
+
+	<form method="POST" action="">
+		Rechercher un mot : <input type="text" name="recherche">
+		<input type="SUBMIT" value="Search!">
+	</form>
+
+</html>
+
+<?php
+
+$db_server = '127.0.0.1'; // Adresse du serveur MySQL
+$db_name = 'MagasinMarteau';            // Nom de la base de données
+$db_user_login = 'root';  // Nom de l'utilisateur
+$db_user_pass = '';       // Mot de passe de l'utilisateur
+
+// Ouvre une connexion au serveur MySQL
+$conn = mysqli_connect($db_server, $db_user_login, $db_user_pass, $db_name);
+
+
+// Récupère la recherche
+$recherche = isset($_POST['recherche']) ? $_POST['recherche'] : '';
+
+// la requete mysql	
+$q = $conn->query(
+	"SELECT `Nom`, `RefFabriquant` FROM MagasinMarteau.produits
+      WHERE Nom LIKE '%$recherche%'
+      OR RefFabriquant LIKE '%$recherche%'
+      LIMIT 10"
+);
+
+// affichage du résultat
+while ($r = mysqli_fetch_array($q)) {
+	echo 'Résultat de la recherche: ' . $r['Nom'] . ', ' . $r['RefFabriquant'] . ' <br />';
+}
+?>
 
 </body>
 <script src="main.js"></script>
 <div style="position: relative;" class="ChangementStyle"><button id="change_style"><img id="img_style" src="lune.png"></button></div>
+
 </html>
