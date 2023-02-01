@@ -1,6 +1,6 @@
 <?php
-	$db_name = "magasinmarteau";
-	function db_connect($user = "root", $passwd = "", $host = "127.0.0.1")
+	$db_name = "MagasinMarteau";
+	function db_connect($user = "mysql", $passwd = "password", $host = "127.0.0.1")
 	{
 		try {
 			$mysqli = new mysqli($host, $user, $passwd, $GLOBALS['db_name']);
@@ -26,12 +26,15 @@
 	{	
 		if ($keyword == "" || !$mysqli)
 			return;
-	  	$query = "DELETE FROM magasinmarteau.utilisateurs WHERE IdUtilisateur=".$keyword.";";
+	  	$query = "DELETE FROM " .$GLOBALS['db_name'] .".utilisateurs WHERE IdUtilisateur=".$keyword.";";
 		$mysqli->query($query);
 	}
 
-
-
-	//SELECT * FROM ". $GLOBALS['db_name'] .".produits WHERE Nom LIKE '%". $keyword ."%';
-
-	//super dinde de la mort
+	function adduser($mysqli = NULL, $nom, $prenom, $fonction)
+	{
+		if (!$mysqli || $nom == "" || $prenom == "" || $fonction == "")
+			return;
+		$query = "INSERT INTO ". $GLOBALS['db_name'] .".utilisateurs (Nom, Prenom, Fonction) VALUES (\"". $nom ."\", \"". $prenom ."\", \"". $fonction ."\");";
+		$mysqli->query($query);
+	}
+?>

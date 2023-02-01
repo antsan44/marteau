@@ -47,7 +47,6 @@ else {
 			<div class="search-container">
 			</div>
 		</div>
-		
 		<div>
 			<nav class="SelectionPages">
 				<div class="navicon">
@@ -60,6 +59,7 @@ else {
 				<a href="sorties.php"><i class="fi fi-br-exit"></i>&emsp;Sorties</a>
 			</nav>
 		</div>
+		<button id='login_btn'>utilisateur</button>
 	</header>
 	<footer>
 		<div style="position: relative;" class="ChangementStyle">
@@ -70,10 +70,8 @@ else {
 				else
 					echo "<img id=\"img_style\" src=\"assets/soleil.png\"/>";
 				?>
-
 			</button>
 		</div>
-		<a href="utilisateur.php">utilisateur</a>
 	</footer>
 	<script src="js/main.js"></script>
 </body>
