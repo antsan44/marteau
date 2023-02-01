@@ -22,5 +22,16 @@
 		return ($result);
 	}
 
+	function deleteuser($mysqli = NULL, $keyword)
+	{	
+		if ($keyword == "" || !$mysqli)
+			return;
+	  	$query = "DELETE FROM magasinmarteau.utilisateurs WHERE IdUtilisateur=".$keyword.";";
+		$mysqli->query($query);
+	}
+
+
 
 	//SELECT * FROM ". $GLOBALS['db_name'] .".produits WHERE Nom LIKE '%". $keyword ."%';
+
+	//super dinde de la mort

@@ -11,7 +11,7 @@ $mysqli = db_connect();
 $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 $per_page = 30;
 $start = ($page - 1) * $per_page;
-$query = "SELECT `idProduit`,`Nom`,`RefFabriquant`,`Description`,`Marque`,`idEmplacement` FROM MagasinMarteau.produits LIMIT $start, $per_page";
+$query = "SELECT `idProduit`,`Nom`,`RefFabriquant`,`Description`,`Marque`,`idEmplacement`,`QtteProduit` FROM MagasinMarteau.produits LIMIT $start, $per_page";
 $liste_resultat = $mysqli->query($query)
 	or die('<p>Échec lors de la consultation : (' . $mysqli->errno . ') ' . $mysqli->error . '</p>');
 
@@ -27,6 +27,7 @@ $html = '
 				<th>Description</th>
 				<th>Marque</th>
 				<th>Eplacement</th>
+				<th>Quantité de porduits</th>
 			</tr>';
 while (($ligne = $liste_resultat->fetch_assoc()) != NULL) {
 	$html .= '
@@ -37,6 +38,7 @@ while (($ligne = $liste_resultat->fetch_assoc()) != NULL) {
 				<td>' . $ligne['Description'] . '</td>
 				<td>' . $ligne['Marque'] . '</td>
 				<td>' . $ligne['idEmplacement'] . '</td>
+				<td>' . $ligne['QtteProduit'] . '</td>
 			</tr>';
 }
 $html .= '

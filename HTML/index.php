@@ -2,8 +2,7 @@
 $cookie_name = "theme";
 if (isset($_COOKIE[$cookie_name]))
 	$cookie_value = $_COOKIE[$cookie_name];
-else
-{
+else {
 	$cookie_opts = array(
 		'expires' => time() + (86400 * 30),
 		'path' => '/',
@@ -17,12 +16,13 @@ else
 
 <!DOCTYPE html>
 <html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
 	<?php
-		if ($_COOKIE[$cookie_name] == 'white')
-			echo "<link id=\"css_link\" rel='stylesheet' href=\"css/style_clair.css\">";
-		else
-			echo "<link id=\"css_link\" rel='stylesheet' href=\"css/style_sombre.css\">";
+	if ($_COOKIE[$cookie_name] == 'white')
+		echo "<link id=\"css_link\" rel='stylesheet' href=\"css/style_clair.css\">";
+	else
+		echo "<link id=\"css_link\" rel='stylesheet' href=\"css/style_sombre.css\">";
 	?>
 	<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
 	<meta charset="utf-8">
@@ -37,6 +37,7 @@ else
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-straight/css/uicons-bold-straight.css'>
 	<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
 	<title>Magasin marteau | Bienvenue</title>
+
 </head>
 
 <body>
@@ -46,6 +47,7 @@ else
 			<div class="search-container">
 			</div>
 		</div>
+		
 		<div>
 			<nav class="SelectionPages">
 				<div class="navicon">
@@ -57,22 +59,24 @@ else
 				<a href="arrivage.php"><i class="fi fi-bs-enter"></i>&emsp;Arrivage</a>
 				<a href="sorties.php"><i class="fi fi-br-exit"></i>&emsp;Sorties</a>
 			</nav>
-
 		</div>
 	</header>
 	<footer>
 		<div style="position: relative;" class="ChangementStyle">
 			<button id="change_style">
 				<?php
-					if ($_COOKIE[$cookie_name] == 'white')
-						echo "<img id=\"img_style\" src=\"assets/lune.png\"/>";
-					else
-						echo "<img id=\"img_style\" src=\"assets/soleil.png\"/>";
+				if (isset($_COOKIE[$cookie_name]) && $_COOKIE[$cookie_name] == 'white') //vérifie que la variable existe et si = a white applique le theme clair
+					echo "<img id=\"img_style\" src=\"assets/lune.png\"/>";
+				else
+					echo "<img id=\"img_style\" src=\"assets/soleil.png\"/>";
 				?>
-				
+
 			</button>
 		</div>
+		<a href="utilisateur.php">utilisateur</a>
 	</footer>
 	<script src="js/main.js"></script>
 </body>
+
 </html>
+
