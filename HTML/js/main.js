@@ -1,4 +1,5 @@
 var style_btn = document.getElementById('change_style');
+var login_btn = document.getElementById('login_btn');
 var link = document.getElementById('css_link');
 var img = document.getElementById('img_style');
 
@@ -15,4 +16,8 @@ style_btn.addEventListener('click', function() {
 		link.setAttribute('href', 'css/style_clair.css');
 		img.setAttribute('src', 'assets/lune.png');
 	}
+});
+
+login_btn.addEventListener('click', function() {
+	window.location.href = "utilisateur.php";
 });
