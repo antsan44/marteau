@@ -15,4 +15,5 @@ th,td {
 
 th {
 	background-color: #b700ff;
+	width: fit-content;
 }

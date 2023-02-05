@@ -18,6 +18,7 @@ else {
 <html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+	<link rel="shortcut icon" href="assets\goutte-deau.png">
 	<?php
 	if ($_COOKIE[$cookie_name] == 'white')
 		echo "<link id=\"css_link\" rel='stylesheet' href=\"css/style_clair.css\">";
@@ -47,7 +48,6 @@ else {
 			<div class="search-container">
 			</div>
 		</div>
-		
 		<div>
 			<nav class="SelectionPages">
 				<div class="navicon">
@@ -73,10 +73,8 @@ else {
 				?>
 			</button>
 		</div>
-		<a href="utilisateur.php">utilisateur</a>
 	</footer>
 	<script src="js/main.js"></script>
 </body>
 
 </html>
-
