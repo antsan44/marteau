@@ -1,6 +1,6 @@
 <?php
 	$db_name = "magasinmarteau";
-	function db_connect($user = "root", $passwd = "", $host = "127.0.0.1")
+	function db_connect($user = "root", $passwd = "password", $host = "127.0.0.1")
 	{
 		try {
 			$mysqli = new mysqli($host, $user, $passwd, $GLOBALS['db_name']);
@@ -38,11 +38,11 @@
 		$mysqli->query($query);
 	}
 
-	function addProduct($mysqli = NULL, $nom, $RefFabriquant, $Description, $Marque, $Emplacement, $Quantitee)
+	function addProduct($mysqli = NULL, $nom, $RefFabriquant, $Description, $Marque, $Emplacement, $Quantitee = 1)
 	{
 		if (!$mysqli || $nom == "" || $RefFabriquant == "" || $Description == "" || $Marque == "" || $Emplacement == "" || $Quantitee == "" )
 			return;
-		$query = "INSERT INTO ". $GLOBALS['db_name'] .".produits (Nom, RefFabriquant, Description, Marque, Emplacement, Quantitee) VALUES (\"". $nom ."\", \"". $RefFabriquant ."\", \"". $Description ."\",\"". $Marque ."\", \"". $Emplacement ."\", \"". $Quantitee ."\");";
+		$query = "INSERT INTO ". $GLOBALS['db_name'] .".produits (Nom, RefFabriquant, Description, Marque, idEmplacement, QtteProduit) VALUES (\"". $nom ."\", \"". $RefFabriquant ."\", \"". $Description ."\",\"". $Marque ."\", \"". $Emplacement ."\", \"". $Quantitee ."\");";
 		$mysqli->query($query);
 	}
 

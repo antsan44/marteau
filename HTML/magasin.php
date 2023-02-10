@@ -11,11 +11,11 @@ $mysqli = db_connect();
 $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 $per_page = 30;
 $start = ($page - 1) * $per_page;
-$query = "SELECT `idProduit`,`Nom`,`RefFabriquant`,`Description`,`Marque`,`idEmplacement`,`QtteProduit` FROM MagasinMarteau.produits LIMIT $start, $per_page";
+$query = "SELECT `idProduit`,`Nom`,`RefFabriquant`,`Description`,`Marque`,`idEmplacement`,`QtteProduit` FROM ". $GLOBALS['db_name']. ".produits LIMIT $start, $per_page";
 $liste_resultat = $mysqli->query($query)
 	or die('<p>Échec lors de la consultation : (' . $mysqli->errno . ') ' . $mysqli->error . '</p>');
 
-$NbLignes = intval($mysqli->query('SELECT COUNT(*) FROM MagasinMarteau.produits')->fetch_array()[0]);
+$NbLignes = intval($mysqli->query('SELECT COUNT(*) FROM '.$GLOBALS['db_name'].'.produits')->fetch_array()[0]);
 $mysqli->close();
 $html = '
 		<table>
@@ -48,7 +48,7 @@ $total_pages = $NbLignes / $per_page;
 $liste_resultat->close();
 $html .= "<div class=\"pagination-dropdown\">
    <select id=\"page-select\">";
-   for ($i = 1; $i <= $total_pages; $i++) {
+   for ($i = 1; $i <= $total_pages + 1; $i++) {
        $html .= "<option value=$i>Page $i</option>";
 }
 

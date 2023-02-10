@@ -10,6 +10,7 @@
 		<input type="text" id="ProductDesc" name="ProductDesc"><br><br>
 		<label for="ProductMarq">Marque :</label>
 		<input type="text" id="ProductMarq" name="ProductMarq"><br><br>
+		<input type="submit" name="AddProduct" value="Ajouter Produit">
 	</div>
 </form>
 <form name="DelProduct" method="post">
@@ -31,20 +32,28 @@
 
 		echo "<select id='SelectProduct' name='SelectProduct'>";
 		while (($user = $liste_resultat->fetch_assoc()) != NULL) {
-			echo "<option value='" . $user['idProduits'] . "'>" . $user['Nom'] . " " . $user['RefFabriquant'] . "</option>";
+			echo "<option value='" . $user['idProduit'] . "'>" . $user['Nom'] . " " . $user['RefFabriquant'] . "</option>";
 		}
 		echo "</select>";
 
-		if (array_key_exists('DelProduct', $_POST)) {
-		//	deleteproduct($mysqli, $_POST['SelectProduct']);
-
-		$query = "DELETE FROM magasinmarteau.produits WHERE IdProduit = ".$_POST['SelectProduct'].";";
-		$mysqli->query($query);
+		if (array_key_exists('DelProduct', $_POST))
+		{
+			$id = $_POST['SelectProduct'];
+			deleteproduct($mysqli, $id);
+			echo "<meta http-equiv='refresh' content='0'>";
 		}
-
+		else if (array_key_exists('AddProduct', $_POST))
+		{
+			$name = $_POST['ProductName'];
+			$ref = $_POST['ProductRef'];
+			$description = $_POST['ProductDesc'];
+			$brand = $_POST['ProductMarq'];
+			addProduct($mysqli, $name, $ref, $description, $brand, "123");
+			echo "<meta http-equiv='refresh' content='0'>";
+		}
 
 		$mysqli->close();
 		?>
-		<input name="DelProduct" type="submit" value="Supprimer">
+		<input name="DelProduct" type="submit" value="supprimer">
 	</div>
 </form>
