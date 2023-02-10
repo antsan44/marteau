@@ -45,8 +45,6 @@ else {
 	<header>
 		<div id="block">
 			<h1 id="titre1">MAGASIN MARTEAU HYDRAULIQUE ET ELECTRIQUE</h1>
-			<div class="search-container">
-			</div>
 		</div>
 		<div>
 			<nav class="SelectionPages">
@@ -58,9 +56,10 @@ else {
 				<a href="recherche.php"><i class="fi fi-br-search"></i>&emsp;Rechercher</a>
 				<a href="arrivage.php"><i class="fi fi-bs-enter"></i>&emsp;Arrivage</a>
 				<a href="sorties.php"><i class="fi fi-br-exit"></i>&emsp;Sorties</a>
+				<a href="utilisateur.php"><i class="fi fi-rr-user"></i>&emsp;Utilisateurs</a>
 			</nav>
 		</div>
-		<button id='login_btn'>utilisateur</button>
+		
 	</header>
 	<footer>
 		<div style="position: relative;" class="ChangementStyle">
@@ -75,6 +74,8 @@ else {
 		</div>
 	</footer>
 	<script src="js/main.js"></script>
+
+	Ce site internet à pour but une gestion de stock dans l'entreprise Roger Marteau.
 </body>
 
 </html>
