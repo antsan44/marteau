@@ -7,7 +7,7 @@ img {
 	right: 0;
 }
 
-button {
+/* button {
 	background-color: transparent;
 	border: none;
 	width: 20px;
@@ -16,7 +16,7 @@ button {
 	display: inline;
 	top: 0;
 	right: 0;
-}
+} */
 
 body {
 	font: 100% Roboto, sans-serif;
@@ -28,6 +28,7 @@ header {
 	display: absolute;
 	padding-bottom: 130px;
 }
+
 .SelectionPages:hover {
 	-webkit-transition-timing-function: ease-out;
 	transition-timing-function: ease-out;

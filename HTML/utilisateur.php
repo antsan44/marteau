@@ -1,4 +1,4 @@
-<?php include './index.php'; ?>
+<?php include './base.php'; ?>
 
 <form method="post">
     <div id="AddDeluser">

@@ -1,4 +1,4 @@
-<?php include './index.php'; ?>
+<?php include './base.php'; ?>
 <form name="AddUser" method="post">
 	<div id="addProducts">
 		<p>Ajouter un produit :</p>
@@ -51,7 +51,6 @@
 			addProduct($mysqli, $name, $ref, $description, $brand, "123");
 			echo "<meta http-equiv='refresh' content='0'>";
 		}
-
 		$mysqli->close();
 		?>
 		<input name="DelProduct" type="submit" value="supprimer">

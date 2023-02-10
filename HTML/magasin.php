@@ -2,7 +2,7 @@
 
 <title>Magasin Marteau | Magasin</title>
 <?php
-include 'index.php';
+include 'base.php';
 require __DIR__ . '/utils.php';
 use function PHPSTORM_META\type;
 $mysqli = db_connect();

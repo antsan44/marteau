@@ -1,26 +1,27 @@
-<?php include './index.php';?>
-<form>
-	<div id="SousTitreArrivage"> Mettre des produits en ligne :</div><br>
-	<label for="name">Nom :</label>
-	<input type="text" id="name" name="name" autofocus ><br><br>
-	<label for="prenom">Prénom :</label>
-	<input type="text" id="prenom" name="prenom"><br><br>
-	<label for="function">Fonction :</label>
-	<select id="function" name="function">
-		<option value="electricien">Électricien</option>
-		<option value="automaticien">Automaticien</option>
-		<option value="automaticien">Conducteur de travaux</option>
-		<option value="automaticien">Étude electrique</option>
-		<option value="automaticien">Étude hydraulique</option>
-	</select><br><br>
-	<p>Information sur le produit :</p>
-	<label for="ProductName">Nom :</label>
-	<input type="text" id="ProductName" name="ProductName"><br><br>
-	<label for="ProductRef">Référence :</label>
-	<input type="text" id="ProductRef" name="ProductRef"><br><br>
-	<label for="ProductDesc">Description :</label>
-	<input type="text" id="ProductDesc" name="ProductDesc"><br><br>
-	<label for="ProductMarq">Marque :</label>
-	<input type="text" id="ProductMarq" name="ProductMarq"><br><br>
-	<input type="submit" value="Envoyer">
+<?php include './base.php';?>
+<form method="post" action="sortie_action.php">
+	<?php
+		require __DIR__ . '/utils.php';
+
+		$mysqli = db_connect();
+		$users = $mysqli->query("SELECT * FROM ". $GLOBALS['db_name']. '.utilisateurs;');
+		echo "<select name=\"SelectUser\">";
+		while (($user = $users->fetch_array()))
+			echo "<option value=\"".$user['idUtilisateur']."\">".$user['Nom']." ".$user['Prenom']." (".$user['FONCTION'].")</option>";
+		echo "</select>";
+
+		$products = $mysqli->query("SELECT * FROM ".$GLOBALS['db_name'].".produits;");
+		echo "<select name=\"SelectProduct\">";
+		while (($product = $products->fetch_array()))
+			echo "<option value='" . $product['idProduit'] . "'>" . $product['Nom'] . " " . $product['RefFabriquant'] ." (Qte. ".$product['QtteProduit'].")</option>";
+		echo "</select>";
+	?>
+	<div>
+		<button type="button" id="remove">&#45;</button>
+		<input type="text" name="quantity" id="quantity" value="1">
+		<button type="button" id="add">&#43;</button>
+	</div>
+	<input type="submit" name="add_p" value="Ajouter Produit">
+	<input type="submit" name="remove_p" value="Enlever Produit">
 </form>
+<script src="js/sortie.js"></script>

@@ -1,4 +1,4 @@
-<?php include './index.php'; ?>
+<?php include './base.php'; ?>
 <div class="recherche">
 	<h2>Produit à rechercher :</h2>
 	<form method="get" action="recherche.php">
