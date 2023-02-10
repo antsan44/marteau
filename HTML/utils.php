@@ -50,7 +50,7 @@
 	{	
 		if ($keyword == "" || !$mysqli)
 			return;
-	  	$query = "DELETE FROM " .$GLOBALS['db_name'] .".produits WHERE idProduit=".$keyword.";";
+	  	$query = "DELETE FROM `produits` WHERE `produits`.`idProduit` = ".$keyword." ;";
 		$mysqli->query($query);
 	}
 ?>

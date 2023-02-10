@@ -1,5 +1,5 @@
 <?php include './index.php'; ?>
-<form method="post">
+<form name="AddUser" method="post">
 	<div id="addProducts">
 		<p>Ajouter un produit :</p>
 		<label for="ProductName">Nom :</label>
@@ -11,6 +11,9 @@
 		<label for="ProductMarq">Marque :</label>
 		<input type="text" id="ProductMarq" name="ProductMarq"><br><br>
 	</div>
+</form>
+<form name="DelProduct" method="post">
+
 	<div id="DelProduct">
 		<div id="SousTitreArrivage"> Supprimer un produit :</div><br>
 
@@ -32,18 +35,16 @@
 		}
 		echo "</select>";
 
-
 		if (array_key_exists('DelProduct', $_POST)) {
-			// If you want to delete a user
-			deleteproduct($mysqli, $_POST['SelectProduct']);
-			echo "<meta http-equiv='refresh' content='0'>";
-		} else if (array_key_exists('Adduser', $_POST)) {
-			//else if you want to add a user
-			adduser($mysqli, $_POST['name'], $_POST['prenom'], $_POST['function']);
-			echo "<meta http-equiv='refresh' content='0'>";
+		//	deleteproduct($mysqli, $_POST['SelectProduct']);
+
+		$query = "DELETE FROM magasinmarteau.produits WHERE IdProduit = ".$_POST['SelectProduct'].";";
+		$mysqli->query($query);
 		}
+
+
 		$mysqli->close();
 		?>
-		<input name="DelProduct" type="submit" value="Supprimer"><br><br>
+		<input name="DelProduct" type="submit" value="Supprimer">
 	</div>
 </form>
